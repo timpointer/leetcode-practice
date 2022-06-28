@@ -29,6 +29,9 @@ func NewTreeHelper(list []int, level int, idx int) *TreeNode {
 	}
 
 	val := list[idx]
+	if val == -1 {
+		return nil
+	}
 	root := &TreeNode{
 		Val:   val,
 		Left:  left,
