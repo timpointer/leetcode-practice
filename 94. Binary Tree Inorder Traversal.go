@@ -8,7 +8,25 @@ package main
  *     Right *TreeNode
  * }
  */
+
+// TODO Follow up: Recursive solution is trivial, could you do it iteratively?
 func inorderTraversal(root *TreeNode) []int {
-	// TODO
-	return nil
+	list := []int{}
+	list = inorderTraversalHelper(root, list)
+	return list
+}
+
+func inorderTraversalHelper(root *TreeNode, list []int) []int {
+	if root == nil {
+		return []int{}
+	}
+	if root.Left != nil {
+		list = append(list, inorderTraversal(root.Left)...)
+	}
+	list = append(list, root.Val)
+	if root.Right != nil {
+		list = append(list, inorderTraversal(root.Right)...)
+	}
+
+	return list
 }
