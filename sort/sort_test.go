@@ -2,15 +2,29 @@ package sort
 
 import (
 	"fmt"
+	"github.com/stretchr/testify/assert"
 	"math/rand"
 	"reflect"
 	"testing"
 )
 
+func TestMid(t *testing.T) {
+	assert.Equal(t, Mid(0, 2), 1, "they should be equal")
+	assert.Equal(t, Mid(0, 3), 1, "they should be equal")
+	assert.Equal(t, Mid(0, 4), 2, "they should be equal")
+	assert.Equal(t, Mid(0, 5), 2, "they should be equal")
+}
+func Mid(a, b int) int {
+	return (a + b) / 2
+}
+
 func TestSort(t *testing.T) {
 	//var sort = BubbleSort
 	//var sort = SelectionSort
-	var sort = InsertSort
+	//var sort = InsertSort
+	//var sort = SelectionSort2
+	//var sort = SelectionSort3
+	var sort = MergeSort
 	debug = true
 	type args struct {
 		list []int
@@ -21,8 +35,17 @@ func TestSort(t *testing.T) {
 		want []int
 	}{
 		{"", args{
-			list: []int{65, 55, 45, 35, 25, 15, 10},
+			list: []int{65, 55, 35, 45, 25, 15, 10},
 		}, []int{10, 15, 25, 35, 45, 55, 65}},
+		{"e1", args{
+			list: []int{1},
+		}, []int{1}},
+		{"e2", args{
+			list: []int{2, 1},
+		}, []int{1, 2}},
+		{"e3", args{
+			list: []int{3, 2, 1},
+		}, []int{1, 2, 3}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

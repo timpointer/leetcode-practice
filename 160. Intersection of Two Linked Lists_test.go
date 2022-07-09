@@ -31,7 +31,7 @@ func Test_getIntersectionNode(t *testing.T) {
 			headA: n2,
 			headB: n3,
 		}, n1},
-		{"e1", args{
+		{"e2", args{
 			headA: NewLinkList([]int{1}),
 			headB: NewLinkList([]int{2}),
 		}, nil},
